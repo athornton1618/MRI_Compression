@@ -61,3 +61,33 @@ def idwt(levels, wdom_data, slices=None):
     slices = default_slices(levels, n)
   c = pywt.array_to_coeffs(wdom_data, slices, output_format='wavedec2')
   return pywt.waverec2(c, 'db4', mode='periodization')
+
+def frob_error(X_reconstruct,X):
+  num = np.linalg.norm(X_reconstruct-X, ord='fro')
+  den = np.linalg.norm(X, ord='fro')
+  return num/den
+
+def k_encode(k,X):
+  X_dwt = dwt(levels=3,sdom_data=X)
+  X_sorted = np.sort(np.absolute(np.array(X_dwt)).flatten(),kind='quicksort')[::-1]
+  k_threshold = X_sorted[k-1]
+  X_dwt[np.absolute(X_dwt)<k_threshold] = 0
+  X_encode = X_dwt
+  return X_encode
+
+def decode(X_encode):
+  X_reconstruct = idwt(levels=3, wdom_data=X_encode)
+  return X_reconstruct
+
+def k_reconstruct(k,X_dwt):
+  X_sorted = np.sort(np.absolute(np.array(X_dwt)).flatten(),kind='quicksort')[::-1]
+  k_threshold = X_sorted[k-1]
+  X_dwt[np.absolute(X_dwt)<k_threshold] = 0
+  X_reconstruct = idwt(levels=3, wdom_data=X_dwt)
+  return X_reconstruct
+
+def evaluate_k(k,X):
+  X_encode = k_encode(k,X)
+  X_reconstruct = decode(X_encode)
+  error = frob_error(X_reconstruct,X)
+  return error
