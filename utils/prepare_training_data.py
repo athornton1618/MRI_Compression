@@ -32,6 +32,8 @@ if __name__ == '__main__':
     # Make a nice DataFrame of the samples
     d = {'slice_name': slice_name, 'slice': slice}
     df = pd.DataFrame(data=d)
-    df.to_pickle("../data/training_set.pkl") 
+    df.to_pickle("../data/training_set.pkl",protocol=4) # Google colab is dumb and needs protocol 4 as of 4/24/2022
+    # Also want json
+    result = df.to_json(r'../data/training_set.json')
 
     
