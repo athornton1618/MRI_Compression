@@ -106,8 +106,8 @@ def resize_scan(X):
     return X_square_256
 
 def to_jpeg(X,X_true):
-    matplotlib.image.imsave('X.jpg', X)
-    image = Image.open('X.jpg').convert('L')
+    matplotlib.image.imsave('../images/X.jpg', X)
+    image = Image.open('../images/X.jpg').convert('L')
     # convert image to numpy array
     X_jpeg = np.asarray(image.getdata()).reshape(image.size)
     X_jpeg = X_jpeg*np.max(X_true)/255
