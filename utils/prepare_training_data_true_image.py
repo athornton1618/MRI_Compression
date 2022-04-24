@@ -25,14 +25,14 @@ if __name__ == '__main__':
             slice_name.append(filename[0]+'_'+str(slice_idx))
             X_raw = combine_all_coils(volume_kspace,slice_idx)
             X = resize_scan(X_raw)
-            X_encode = np.array(k_encode(K,X)).flatten()
-            slice.append(X_encode)
+            X = np.array(X.flatten())
+            slice.append(X)
         ii+=1
 
     # Make a nice DataFrame of the samples
     d = {'slice_name': slice_name, 'slice': slice}
     df = pd.DataFrame(data=d)
-    df.to_pickle("../data/training_set.pkl") # Google colab is dumb and needs protocol 4 as of 4/24/2022
+    df.to_pickle("../data/training_set_true_image.pkl") # Google colab is dumb and needs protocol 4 as of 4/24/2022
     # Also want json
     #result = df.to_json(r'../data/training_set.json')
 
