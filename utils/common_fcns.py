@@ -3,6 +3,10 @@ import pywt
 import bokeh
 import bokeh.plotting as bpl
 from bokeh.models import ColorBar, BasicTicker, LinearColorMapper
+import matplotlib
+import fastmri
+from fastmri.data import transforms as T
+from PIL import Image
 
 # Some functions taken from HW1 - MRI
 
@@ -91,3 +95,44 @@ def evaluate_k(k,X):
   X_reconstruct = decode(X_encode)
   error = frob_error(X_reconstruct,X)
   return error
+
+def resize_scan(X):
+    # Raw image is a rectangle, crop to be square
+    y_min = int((768-396)/2)
+    y_max = int((768-396)/2+396)
+    X_square = X[y_min:y_max,:]
+    # Crop further to zone of interest to get a 256x256 image
+    X_square_256 = X_square[50:50+256,70:70+256]
+    return X_square_256
+
+def to_jpeg(X,X_true):
+    matplotlib.image.imsave('X.jpg', X)
+    image = Image.open('X.jpg').convert('L')
+    # convert image to numpy array
+    X_jpeg = np.asarray(image.getdata()).reshape(image.size)
+    X_jpeg = X_jpeg*np.max(X_true)/255
+    return X_jpeg
+
+def combine_all_coils(volume_kspace,slice_idx):
+    slice_kspace = volume_kspace[slice_idx]
+    slice_kspace2 = T.to_tensor(slice_kspace)      # Convert from numpy array to pytorch tensor
+    slice_image = fastmri.ifft2c(slice_kspace2)           # Apply Inverse Fourier Transform to get the complex image
+    slice_image_abs = fastmri.complex_abs(slice_image)   # Compute absolute value to get a real image
+    slice_image_rss = fastmri.rss(slice_image_abs, dim=0)
+    return slice_image_rss.numpy()
+
+def binary_search(low, high, accuracy, tolerance, X):
+  guess = (high + low)//2
+  if guess == low or guess == high:
+    return guess
+  guess_error = evaluate_k(guess, X)
+
+  #print("Low: "+str(low)+",High: "+str(high))
+  #print(guess_error)
+
+  if guess_error - (1 - accuracy) < tolerance:
+    return binary_search(low, guess-1, accuracy, tolerance, X)
+  elif guess_error - (1 - accuracy) > tolerance:
+    return binary_search(guess+1, high, accuracy, tolerance, X)
+  else:
+    return guess
