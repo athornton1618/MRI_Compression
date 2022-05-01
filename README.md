@@ -23,8 +23,8 @@ The purpose of this research is to create a model which can efficiently store sl
 * 1 brain for test (16 slices), 26 brains for evaluation (14 - 16 slices each)
 * Open source [software suite](https://github.com/facebookresearch/fastMRI) for slicing and manipulating data
 
-## JPEG vs. Wavelet
-* K-wavelet approximation is much more efficient than standard JPEG compression for reconstruction accuracy
+## Generational Loss
+* Recursive JPEG compressions quickly erodes quality (photocopier effect)
 * After only a few iterations, JPEG compression succumbs to noise corruption
 * Wavelet basis is very resilient to recursive operations
 
@@ -37,6 +37,23 @@ The purpose of this research is to create a model which can efficiently store sl
   <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/k_wavelet_recursion.png >
   Recursive K-Wavelet Reconstruction
 <p/>
+
+<p align="center">
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generation_loss_jpeg.jpg width="500" >
+<p/>
+<p align="center">
+  JPEG Generational Loss
+<p/>
+
+<p align="center">
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generation_loss_wavelet.jpg width="500">
+<p/>
+<p align="center">
+  Quantized K-Wavelet Generational Loss
+<p/>
+
+
+* Quantized k-wavelet compression results in quality loss in only first compression!
 
 ## Model Architecture
 <p align="center">
