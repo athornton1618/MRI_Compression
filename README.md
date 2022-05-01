@@ -37,10 +37,6 @@ The purpose of this research is to create a model which can efficiently store sl
   <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/jpeg_recursion.png >
 <p/>
 
-<p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/JPEG_generational_loss_plot.png width="400">
-<p/>
-
 ### Quantized K-Wavelet Generational Loss
 
 * Wavelet basis is very resilient to recursive operations
@@ -55,7 +51,7 @@ The purpose of this research is to create a model which can efficiently store sl
 <p/>
 
 <p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/quantized_k_wavelet_generational_loss_plot.png width="400">
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generational_loss_plot.png width="400">
 <p/>
 
 
