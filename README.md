@@ -26,17 +26,6 @@ The purpose of this research is to create a model which can efficiently store sl
 ## Generational Loss
 * Recursive JPEG compressions quickly erodes quality (photocopier effect)
 * After only a few iterations, JPEG compression succumbs to noise corruption
-* Wavelet basis is very resilient to recursive operations
-
-<p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/jpeg_recursion.png >
-  Recursive JPEG Reconstruction
-<p/>
-
-<p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/k_wavelet_recursion.png >
-  Recursive K-Wavelet Reconstruction
-<p/>
 
 <p align="center">
   <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generation_loss_jpeg.jpg width="500" >
@@ -46,14 +35,26 @@ The purpose of this research is to create a model which can efficiently store sl
 <p/>
 
 <p align="center">
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/jpeg_recursion.png >
+  Recursive JPEG Reconstruction
+<p/>
+
+* Wavelet basis is very resilient to recursive operations
+* Quantized k-wavelet compression results in quality loss in only first compression!
+
+<p align="center">
   <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generation_loss_wavelet.jpg width="500">
 <p/>
 <p align="center">
   Quantized K-Wavelet Generational Loss
 <p/>
 
+<p align="center">
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/k_wavelet_recursion.png >
+  Recursive K-Wavelet Reconstruction
+<p/>
 
-* Quantized k-wavelet compression results in quality loss in only first compression!
+
 
 ## Model Architecture
 <p align="center">
