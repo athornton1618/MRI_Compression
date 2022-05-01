@@ -9,7 +9,7 @@ EECS E6876 Research Project - Columbia University Spring 2022
 1. Alex Thornton     (apt2141@columbia.edu)	
 
 ## Abstract
-The purpose of this research is to create a model which can efficiently store slices of MRI scans. This is achieved with a hybrid model combining wavelet approximation features as an input to a sparse auto-encoder network. Training and test data was provided by FastMRI, a joint venture between NYU and Facebook (Meta).
+The purpose of this research is to create a model which can efficiently store slices of MRI scans. Efficiency is explored across two optimization domains; minimization of generational loss through recursive compression, and compressed space minimization. This is achieved with a hybrid model combining wavelet approximation features as an input to a sparse auto-encoder network. Training and test data was provided by FastMRI, a joint venture between NYU and Facebook (Meta).
 
 ## Use Case
 
@@ -34,12 +34,13 @@ The purpose of this research is to create a model which can efficiently store sl
 <p/>
 
 <p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/jpeg_recursion.png >
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/jpeg_recursion.jpg width="700">
 <p/>
 
 ### Quantized K-Wavelet Generational Loss
 
 * Wavelet basis is very resilient to recursive operations
+* Subject k-wavelet coefficients to 8-bit encoding scheme
 * Quantized k-wavelet compression results in quality loss in only first compression!
 
 <p align="center">
@@ -47,11 +48,11 @@ The purpose of this research is to create a model which can efficiently store sl
 <p/>
 
 <p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/quantized_k_wavelet_recursion.png >
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/quantized_k_wavelet_recursion.jpg width="700">
 <p/>
 
 <p align="center">
-  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generational_loss_plot.png width="400">
+  <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/generational_loss_plot.jpg width="500">
 <p/>
 
 
