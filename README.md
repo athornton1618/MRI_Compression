@@ -70,7 +70,7 @@ The purpose of this research is to create a model which can efficiently store sl
 ## References
 
 ## One More Thing
-This project marks the completion of my M.S. at Columbia University. 
+This project marks the completion of my M.Sc. at Columbia University. 
 
 I'd like to thank my Mom, Dad, sister Carolyn, brother Matt, and Murphy 🐕! 
 
