@@ -83,6 +83,14 @@ def decode(X_encode):
   X_reconstruct = idwt(levels=3, wdom_data=X_encode)
   return X_reconstruct
 
+def k_encode_q(k,X):
+  X_encode = k_encode(k,X)
+  return np.array(X_encode, dtype=np.float32)
+
+def decode_q(X_encode):
+  X_reconstruct = decode(X_encode)
+  return np.array(X_reconstruct, dtype=np.float32)
+
 def k_reconstruct(k,X_dwt):
   X_sorted = np.sort(np.absolute(np.array(X_dwt)).flatten(),kind='quicksort')[::-1]
   k_threshold = X_sorted[k-1]
@@ -140,6 +148,6 @@ def binary_search(low, high, accuracy, tolerance, X):
 # Quantized K-Wavelet compression
 def quantize(X):
     Xmax = np.max(X)
-    X_q = X*255/Xmax
-    X_q = np.array(X_q, dtype=np.int8)
+    X_q = X*1/Xmax #normalize between 0-1
+    X_q = np.array(X_q, dtype=np.float32)
     return X_q
