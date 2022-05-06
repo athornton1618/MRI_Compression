@@ -136,3 +136,10 @@ def binary_search(low, high, accuracy, tolerance, X):
     return binary_search(guess+1, high, accuracy, tolerance, X)
   else:
     return guess
+
+# Quantized K-Wavelet compression
+def quantize(X):
+    Xmax = np.max(X)
+    X_q = X*255/Xmax
+    X_q = np.array(X_q, dtype=np.int8)
+    return X_q

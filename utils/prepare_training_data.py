@@ -4,7 +4,7 @@ import os
 import h5py
 import sys
 sys.path.append('../')
-from common_fcns import combine_all_coils, resize_scan, k_encode
+from common_fcns import combine_all_coils, resize_scan, k_encode, quantize
 
 if __name__ == '__main__':
     # Load in the scans, compute k_encoding, save off
@@ -26,6 +26,7 @@ if __name__ == '__main__':
         for slice_idx in range(n_slices):
             X_raw = combine_all_coils(volume_kspace,slice_idx)
             X = resize_scan(X_raw)
+            X = quantize(X)
             X_encode = np.array(k_encode(K,X)).flatten()
             if ii==0:
                 test_slice_name.append(filename[0]+'_'+str(slice_idx))
