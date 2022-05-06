@@ -9,8 +9,10 @@ from common_fcns import combine_all_coils, resize_scan, k_encode
 if __name__ == '__main__':
     # Load in the scans, compute k_encoding, save off
     data_dir = '../data/multicoil_test/'
-    slice_name = []
-    slice = []
+    train_slice_name = []
+    train_slice = []
+    test_slice_name = []
+    test_slice = []
     K = 10000 #fix K for 'good' value
     #iterate through directory
     ii = 0
@@ -22,18 +24,24 @@ if __name__ == '__main__':
         n_slices = volume_kspace.shape[0]
         filename = file.split('.')
         for slice_idx in range(n_slices):
-            slice_name.append(filename[0]+'_'+str(slice_idx))
             X_raw = combine_all_coils(volume_kspace,slice_idx)
             X = resize_scan(X_raw)
             X_encode = np.array(k_encode(K,X)).flatten()
-            slice.append(X_encode)
+            if ii==0:
+                test_slice_name.append(filename[0]+'_'+str(slice_idx))
+                test_slice.append(X_encode)
+            else:
+                train_slice_name.append(filename[0]+'_'+str(slice_idx))
+                train_slice.append(X_encode)
+            #print(X_encode.shape)
         ii+=1
 
     # Make a nice DataFrame of the samples
-    d = {'slice_name': slice_name, 'slice': slice}
-    df = pd.DataFrame(data=d)
-    df.to_pickle("../data/training_set.pkl") # Google colab is dumb and needs protocol 4 as of 4/24/2022
-    # Also want json
-    #result = df.to_json(r'../data/training_set.json')
+    train_d = {'slice_name': train_slice_name, 'slice': train_slice}
+    train_df = pd.DataFrame(data=train_d)
+    train_result = train_df.to_json(r'../data/train_set.json')
+    test_d = {'slice_name': test_slice_name, 'slice': test_slice}
+    test_df = pd.DataFrame(data=test_d)
+    test_result = test_df.to_json(r'../data/test_set.json')
 
     
