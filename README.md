@@ -26,7 +26,7 @@ Auto Encoder, Convolutional Neural Network
 
 * JPEG compression is optimized for general images
 * But what about images that share common features?
-* I propose a model that combines signal pre-processing and deep learning to efficiently compress MRI scans
+* Various deep learning and signal processing techniques are explored for new MRI compression schemes 
 
 ## Dataset
 * Approved use of [FastMRI](https://fastmri.med.nyu.edu/) dataset from Facebook (Meta) and NYU
@@ -88,9 +88,12 @@ Auto Encoder, Convolutional Neural Network
 * Check out the [presentation](https://github.com/athornton1618/MRI_Compression/tree/main/documentation/apt2141_ELEN6876_presentation.pptx)
 
 ## Try It Yourself
-1. git clone www.github.com/athornton1618/MRI_Compression.git
-2. Obtain permission for [FastMRI](https://fastmri.med.nyu.edu/) dataset
-3. Download multicoil_test dataset with following command:
+1. Clone this repository
+```
+git clone www.github.com/athornton1618/MRI_Compression.git
+```
+3. Obtain permission for [FastMRI](https://fastmri.med.nyu.edu/) dataset
+4. Download multicoil_test dataset with following command:
 ```
 curl -C - "https://fastmri-dataset.s3.amazonaws.com/brain_multicoil_test.tar.gz?AWSAccessKeyId=YOUR TOKEN" --output brain_multicoil_test.tar.gz
 mkdir MRI_Compression/data
