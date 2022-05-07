@@ -7,6 +7,7 @@ import matplotlib
 import fastmri
 from fastmri.data import transforms as T
 from PIL import Image
+from sklearn.preprocessing import normalize
 
 # Some functions taken from HW1 - MRI
 
@@ -67,6 +68,8 @@ def idwt(levels, wdom_data, slices=None):
   return pywt.waverec2(c, 'db4', mode='periodization')
 
 def frob_error(X_reconstruct,X):
+  X_reconstruct = normalize(X_reconstruct, axis=1, norm='l2')
+  X = normalize(X, axis=1, norm='l2')
   num = np.linalg.norm(X_reconstruct-X, ord='fro')
   den = np.linalg.norm(X, ord='fro')
   return num/den

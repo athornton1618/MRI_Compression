@@ -28,17 +28,16 @@ if __name__ == '__main__':
         for slice_idx in range(n_slices):
             X_raw = combine_all_coils(volume_kspace,slice_idx)
             X = resize_scan(X_raw)
-            X = quantize(X)
             X_encode = np.array(k_encode(K,X)).flatten()
             X = np.array(X).flatten()
             if filename[0]=='file_brain_AXT2_200_2000482':
                 test_slice_name.append(filename[0]+'_'+str(slice_idx))
-                test_slice_wavelet.append(X_encode)
-                test_slice_image.append(X)
+                test_slice_wavelet.append(quantize(X_encode))
+                test_slice_image.append(quantize(X))
             else:
                 train_slice_name.append(filename[0]+'_'+str(slice_idx))
-                train_slice_wavelet.append(X_encode)
-                train_slice_image.append(X)
+                train_slice_wavelet.append(quantize(X_encode))
+                train_slice_image.append(quantize(X))
             #print(X_encode.shape)
         ii+=1
 
