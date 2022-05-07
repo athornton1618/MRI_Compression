@@ -83,9 +83,11 @@ Auto Encoder, Convolutional Neural Network
   <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/cnn_sae_363.jpg width="350">
 <p/>
 
+## Learn More
+* Read the full [paper](https://github.com/athornton1618/MRI_Compression/tree/main/documentation/MRI_Compression.pdf)
+* Check out the [presentation](https://github.com/athornton1618/MRI_Compression/tree/main/documentation/apt2141_ELEN6876_presentation.pptx)
 
-
-## How To Use
+## Try It Yourself
 1. git clone www.github.com/athornton1618/MRI_Compression.git
 2. Obtain permission for [FastMRI](https://fastmri.med.nyu.edu/) dataset
 3. Download multicoil_test dataset with following command:
