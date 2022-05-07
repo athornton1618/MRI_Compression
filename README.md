@@ -1,5 +1,5 @@
 # Deep MRI Compression
-EECS E6876 Research Project - Columbia University Spring 2022
+ELEN E6876 Research Project - Columbia University Spring 2022
 
 <p align="center">
   <img src=https://github.com/athornton1618/MRI_Compression/blob/main/images/slice_visualization.png width="500">
