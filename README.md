@@ -17,6 +17,8 @@ minimization. Some techniques and frameworks explored include
 k-wavelet approximation, and various auto-encoder frameworks
 for neural networks. Training and test data was provided by
 FastMRI, a joint venture between NYU and Facebook (Meta).
+
+
 Index Terms—Wavelet, Medical Imaging, Compression, Sparse
 Auto Encoder, Convolutional Neural Network
 
