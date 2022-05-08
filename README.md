@@ -91,7 +91,7 @@ Auto Encoder, Convolutional Neural Network
 1. Clone this repository
 ```
 git clone www.github.com/athornton1618/MRI_Compression.git
-cd MRI_compression
+cd MRI_Compression
 pip install -r requirements.txt
 ```
 3. Obtain permission for [FastMRI](https://fastmri.med.nyu.edu/) dataset
