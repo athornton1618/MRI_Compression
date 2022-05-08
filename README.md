@@ -91,6 +91,8 @@ Auto Encoder, Convolutional Neural Network
 1. Clone this repository
 ```
 git clone www.github.com/athornton1618/MRI_Compression.git
+cd MRI_compression
+pip install -r requirements.txt
 ```
 3. Obtain permission for [FastMRI](https://fastmri.med.nyu.edu/) dataset
 4. Download multicoil_test dataset with following command:
